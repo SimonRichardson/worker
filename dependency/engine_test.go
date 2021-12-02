@@ -708,10 +708,6 @@ func (s *EngineSuite) TestConfigValidate(c *gc.C) {
 		}, "missing Clock not valid",
 	}, {
 		func(config *dependency.EngineConfig) {
-			config.Metrics = nil
-		}, "missing Metrics not valid",
-	}, {
-		func(config *dependency.EngineConfig) {
 			config.Logger = nil
 		}, "missing Logger not valid",
 	}}
@@ -724,7 +720,6 @@ func (s *EngineSuite) TestConfigValidate(c *gc.C) {
 			ErrorDelay:  time.Second,
 			BounceDelay: time.Second,
 			Clock:       clock.WallClock,
-			Metrics:     dependency.DefaultMetrics(),
 			Logger:      loggo.GetLogger("test"),
 		}
 		test.breakConfig(&config)
